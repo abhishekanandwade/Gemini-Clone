@@ -1,14 +1,16 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import './Sidebar.css'
 import { assets } from '../../assets/assets';
+import { Context } from '../../context/context';
 const Sidebar = () => {
 
   const [extended, setExtended] = useState(false)
+  const { onSent, prevPrompts, setRecentPromt } = useContext(Context)
 
   return (
     <div className='sidebar'>
       <div className='top'>
-        <img onClick={()=>setExtended(prev=>!prev)} className='menu' src={assets.menu_icon} alt="" />
+        <img onClick={() => setExtended(prev => !prev)} className='menu' src={assets.menu_icon} alt="" />
         <div className='new-chat'>
           <img src={assets.plus_icon} alt="" />
           {extended ? <p>New Chat</p> : null}
@@ -16,25 +18,30 @@ const Sidebar = () => {
         {extended ?
           <div className='recent'>
             <p className='recent-title'>Recent</p>
-            <div className='recent-entry'>
-              <img src={assets.message_icon} alt="" />
-              <p>What is react ...</p>
-            </div>
+            {prevPrompts.map((item, index) => {
+              return (
+                <div className='recent-entry' id={index}>
+                  <img src={assets.message_icon} alt="" />
+                  <p>{item}</p>
+                </div>
+              )
+            })}
+
           </div> : null}
 
       </div>
       <div className='bottom'>
         <div className='bottom-item recent-entry'>
           <img src={assets.question_icon} alt='' />
-          {extended?<p>Help</p> : null}
+          {extended ? <p>Help</p> : null}
         </div>
         <div className='bottom-item recent-entry'>
           <img src={assets.history_icon} alt='' />
-          {extended?<p>Activity</p> : null}
+          {extended ? <p>Activity</p> : null}
         </div>
         <div className='bottom-item recent-entry'>
           <img src={assets.setting_icon} alt='' />
-          {extended?<p>Settings</p>:null}
+          {extended ? <p>Settings</p> : null}
         </div>
 
       </div>
