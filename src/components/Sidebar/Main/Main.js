@@ -7,7 +7,6 @@ const Main = () => {
 
     const { onSent, recentPromt, showResult, loading, resultData, setInput, input } = useContext(Context);
 
-
     return (
         <div className='main'>
             <div className='nav'>
@@ -48,8 +47,8 @@ const Main = () => {
                         </div>
                         <div className='result-data'>
                             <img src={assets.gemini_icon} alt="" />
-                            {loading ?
-                                <div className='loader'>
+                            {loading
+                                ? <div className='loader'>
                                     <hr />
                                     <hr />
                                     <hr />
