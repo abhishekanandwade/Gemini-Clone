@@ -2,6 +2,9 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## API Key 
+Create a Gemini Api key and add it in gemini.js file
+
 ## Available Scripts
 
 In the project directory, you can run:
